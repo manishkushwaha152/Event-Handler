@@ -32,7 +32,7 @@ app.use("/api/tickets", require("./routes/ticketRoutes"));
 app.use("/api/bookings", require("./routes/bookingRoutes"));
 app.use("/api/user", require("./routes/userRoutes"));
 app.use("/api/owner", require("./routes/ownerRoutes"));
-app.use("/api/payment", require("./routes/paymentRoutes"));
+#app.use("/api/payment", require("./routes/paymentRoutes"));
 #app.use("/auth", require("./routes/auth"));
 
 // Health check
