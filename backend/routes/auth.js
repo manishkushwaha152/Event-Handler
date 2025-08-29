@@ -1,7 +1,7 @@
-import express from "express";
-import { OAuth2Client } from "google-auth-library";
-import jwt from "jsonwebtoken";
-import User from "../models/userModel.js"; // tumhari user model
+const express = require("express");
+const { OAuth2Client } = require("google-auth-library");
+const jwt = require("jsonwebtoken");
+const User = require("../models/userModel"); // tumhara user model
 
 const router = express.Router();
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
@@ -40,4 +40,4 @@ router.post("/user/google-login", async (req, res) => {
   }
 });
 
-export default router;
+module.exports = router;
