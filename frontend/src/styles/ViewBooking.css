@@ -1,0 +1,268 @@
+.view-bookings-container {
+  width: 100%;
+  max-width: 1100px;
+  background: rgba(255, 255, 255, 0.9); /* optional semi-white backdrop */
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-height: 90vh; /* 👈 limit container height */
+  overflow-y: auto; /* 👈 enable vertical scrolling only inside this */
+}
+
+.filter-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.filter-section select,
+.filter-section input[type="date"] {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.export-btn {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.export-btn:hover {
+  background-color: #45a049;
+}
+
+.booking-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.booking-card {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 1rem;
+  background: #fff;
+  box-shadow: 0 0 5px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.card-header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-header h4 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+}
+
+.status {
+  font-weight: bold;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+
+.status.confirmed {
+  background-color: #e6f7e6;
+  color: #2e7d32;
+  margin-bottom: 0;
+}
+
+.status.canceled {
+  background-color: #fbe9e7;
+  color: #c62828;
+}
+
+.details-left {
+  text-align: left;
+  margin-top: 1rem;
+}
+
+.seat-tags {
+  margin-top: 0.5rem;
+}
+
+.seat-tag {
+  background-color: #f1f1f1;
+  padding: 4px 8px;
+  margin: 2px;
+  border-radius: 4px;
+  display: inline-block;
+  font-size: 0.85rem;
+}
+
+.qr-section {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.qr-section img,
+.qr-section button {
+  width: 140px;
+}
+
+.qr-section img {
+  height: 140px;
+  border: 1px solid #ddd;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.qr-section button {
+  padding: 6px 10px;
+  font-size: 0.85rem;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.qr-section button:hover {
+  background-color: #1565c0;
+}
+
+.cancel-btn {
+  background-color: #f44336;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  align-self: center;
+}
+
+.cancel-btn:hover {
+  background-color: #d32f2f;
+}
+
+.pagination {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.pagination button {
+  border: 1px solid #ccc;
+  padding: 0.5rem 0.9rem;
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background-color: #1976d2;
+  color: white;
+  font-weight: bold;
+}
+
+.qr-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.pdf-btn {
+  background-color: #2d89ef;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pdf-btn:hover {
+  background-color: #1b66c9;
+}
+
+.booking-wrapper {
+  min-height: 100vh;
+  background-image: url("/ticketbg2.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem 1rem;
+  overflow: hidden; /* Prevent scroll on wrapper */
+}
+
+/* Export Buttons Container */
+.export-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Export Card */
+.export-card {
+  flex: 1;
+  min-width: 140px;
+  background: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+/* Hover Effect */
+.export-card:hover {
+  background: #43a047;
+  transform: scale(1.05);
+}
+
+/* Mobile View */
+/* Mobile View ke liye changes */
+@media (max-width: 768px) {
+  .qr-section {
+    position: static;         /* absolute hata diya */
+    margin-top: 10px;         /* Confirmed ke niche space */
+    display: flex;
+    flex-direction: column;
+    align-items: center;      /* center align */
+    gap: 8px;
+  }
+
+  .qr-section img {
+    width: 90px;   /* size chhota */
+    height: 90px;
+  }
+
+  .qr-section button {
+    width: 100%;   /* mobile me button full width */
+    font-size: 14px;
+    padding: 6px 8px;
+  }
+}

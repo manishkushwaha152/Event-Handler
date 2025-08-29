@@ -1,0 +1,36 @@
+/* nav */
+/* Navbar Styles */
+.navbar {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.navbar-section {
+  flex: 1;
+}
+
+.navbar-section.center {
+  text-align: center;
+}
+
+.navbar-section.right {
+  text-align: right;
+}
+
+.nav-link {
+  color: white;
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,46 @@
+.owner-dashboard {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.owner-dashboard h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+}
+
+.dashboard-grid a {
+  text-decoration: none;
+  width: 100%;
+}
+
+.dashboard-grid button {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.dashboard-grid button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.dashboard-grid button:active {
+  transform: scale(0.98);
+}

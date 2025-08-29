@@ -1,0 +1,241 @@
+.book-ticket-container {
+  max-width: 600px;
+  margin: 3rem 0 3rem 3rem;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.book-ticket-title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  color: #e53935;
+  font-weight: bold;
+}
+
+.book-ticket-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.section-heading {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 1.5rem;
+  color: #333;
+}
+
+.book-ticket-select,
+.book-ticket-input {
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.book-ticket-select:disabled {
+  background-color: #f0f0f0;
+}
+
+.ticket-preview {
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px dashed #ccc;
+}
+
+.seat-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  overflow-x: auto; /* ✅ mobile scroll support */
+}
+
+.seat-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.row-label {
+  font-weight: bold;
+  width: 30px;
+  text-align: center;
+}
+
+.seat {
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border: 2px solid #aaa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.seat.available:hover {
+  background-color: #f0f0f0;
+  border-color: #333;
+}
+
+.seat.selected {
+  background-color: #e53935;
+  color: white;
+  border: 2px solid #e53935;
+}
+
+.seat.booked {
+  background-color: #ccc;
+  color: #777;
+  border: 2px solid #aaa;
+  cursor: not-allowed;
+}
+
+.seat-legend {
+  display: flex;
+  gap: 2rem;
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap; /* ✅ mobile line break */
+}
+
+.seat-legend span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.book-ticket-button,
+.confirm-payment-btn {
+  padding: 0.75rem 1.5rem;
+  background-color: #e53935;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.book-ticket-button:hover,
+.confirm-payment-btn:hover {
+  background-color: #c62828;
+}
+
+.qr-code-box {
+  text-align: center;
+  background-color: #fff5f5;
+  border: 2px dashed #e53935;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.qr-code-box img {
+  width: 180px;
+  height: 180px;
+  margin: 1rem auto;
+}
+
+.modal.success {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #4caf50;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  animation: fadeInOut 3s ease forwards;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(20px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(20px); }
+}
+
+.no-seats-message {
+  font-style: italic;
+  color: #888;
+  margin: 0.5rem 0;
+}
+
+.book-ticket-bg {
+  min-height: 100vh;
+  background-image: url("/booking.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 2rem;
+}
+
+/* ✅ RESPONSIVE MEDIA QUERIES */
+@media (max-width: 1024px) {
+  .book-ticket-container {
+    margin: 2rem auto;
+    width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .book-ticket-title {
+    font-size: 1.6rem;
+  }
+
+  .seat {
+    width: 32px;
+    height: 32px;
+    font-size: 0.8rem;
+  }
+
+  .seat-legend {
+    gap: 1rem;
+    font-size: 0.85rem;
+  }
+
+  .book-ticket-container {
+    margin: 1.5rem auto;
+    padding: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .book-ticket-title {
+    font-size: 1.4rem;
+  }
+
+  .seat {
+    width: 28px;
+    height: 28px;
+    font-size: 0.7rem;
+  }
+
+  .seat-row {
+    justify-content: center;
+  }
+
+  .book-ticket-container {
+    margin: 1rem auto;
+    padding: 1rem;
+    width: 95%;
+  }
+
+  .book-ticket-bg {
+    padding: 1rem;
+    align-items: center;
+    justify-content: center;
+  }
+}

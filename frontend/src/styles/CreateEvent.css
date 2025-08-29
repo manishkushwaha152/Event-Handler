@@ -1,0 +1,150 @@
+.create-event-container {
+  max-width: 600px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+/* Inputs & Textarea */
+.event-form input,
+.event-form textarea,
+.datepicker {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+/* Location group (input + button) */
+.location-group {
+  display: flex;
+  gap: 10px;
+}
+
+.location-group input {
+  flex: 1;
+}
+
+/* Image Preview */
+.image-preview img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+/* Buttons row */
+.actions {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+button {
+  padding: 10px 18px;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover:not(:disabled) {
+  background: #0056b3;
+}
+
+button:disabled {
+  background: #999;
+}
+
+/* Event Preview */
+.event-preview {
+  margin-top: 20px;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #f9f9f9;
+}
+
+/* ---------------------------
+   📱 Mobile (≤767px)
+---------------------------- */
+@media (max-width: 767px) {
+  .create-event-container {
+    max-width: 95%;
+    margin: 2rem auto;
+    padding: 1.2rem;
+  }
+
+  .event-form input,
+  .event-form textarea,
+  .datepicker {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .location-group {
+    flex-direction: column; /* Input aur button neeche neeche aayenge */
+  }
+
+  .actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  button {
+    width: 100%;
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+/* ---------------------------
+   📲 Tablet (768px - 1024px)
+---------------------------- */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .create-event-container {
+    max-width: 80%;
+    padding: 1.5rem;
+  }
+
+  .event-form input,
+  .event-form textarea,
+  .datepicker {
+    font-size: 15px;
+  }
+
+  .actions {
+    gap: 12px;
+  }
+
+  button {
+    font-size: 15px;
+    padding: 10px 14px;
+  }
+}
+
+/* ---------------------------
+   🖥️ Desktop (1025px+)
+---------------------------- */
+@media (min-width: 1025px) {
+  .create-event-container {
+    max-width: 600px;
+  }
+
+  .event-form input,
+  .event-form textarea,
+  .datepicker {
+    font-size: 16px;
+  }
+
+  button {
+    font-size: 16px;
+    padding: 10px 18px;
+  }
+}

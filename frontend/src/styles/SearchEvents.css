@@ -1,0 +1,156 @@
+.search-events-container {
+  padding: 2rem;
+  max-width: 1440px;
+  margin: auto;
+  text-align: center;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.9); /* ✅ readability on bg */
+  border-radius: 12px;
+}
+
+.search-events-container h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  color: #222;
+  font-weight: 600;
+}
+
+/* 🔍 Search Input */
+.search-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* 🟦 Grid Layout */
+.event-results-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* desktop */
+  gap: 2rem;
+  justify-content: center;
+  padding: 0 1rem;
+}
+
+/* 📱 Responsive Grid */
+@media (max-width: 1200px) {
+  .event-results-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .event-results-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .event-results-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .search-events-container {
+    padding: 1.2rem;
+  }
+
+  .search-events-container h2 {
+    font-size: 1.6rem;
+  }
+
+  .search-input {
+    max-width: 100%;
+    padding: 0.7rem 0.9rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* 📦 Event Card */
+.event-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-4px);
+}
+
+/* 🖼 Event Image */
+.event-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 576px) {
+  .event-image {
+    height: 160px;
+  }
+}
+
+/* 🧾 Title & Info */
+.event-card h3 {
+  font-size: 1.2rem;
+  color: #3f51b5;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+}
+
+.event-card p {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0.3rem 0;
+}
+
+/* 🔗 View Details Button */
+.view-details-btn {
+  margin-top: auto;
+  padding: 0.6rem 1rem;
+  background-color: #3f51b5;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 6px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.view-details-btn:hover {
+  background-color: #2c3e91;
+}
+
+/* 🎨 Background */
+.book-ticket {
+  min-height: 100vh;
+  background-image: url("/publicevent1.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem;
+}
+
+/* ✅ Small Screen Fix */
+@media (max-width: 768px) {
+  .book-ticket {
+    padding: 1rem;
+    align-items: center;
+  }
+}
