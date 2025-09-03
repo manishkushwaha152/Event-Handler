@@ -14,7 +14,7 @@ import UserDashboard from "../pages/user/UserDashboard";
 import ViewBooking from "../pages/user/ViewBooking";
 import BookEventTicket from "../pages/user/BookEventTicket";
 import SearchEvents from "../pages/user/SearchEvents";
-
+import UserProfile from "../pages/user/UserProfile";
 //  Owner Pages
 import OwnerLogin from "../pages/owner/OwnerLogin";
 import OwnerRegister from "../pages/owner/OwnerRegister";
@@ -47,6 +47,7 @@ export default function AppRoutes() {
         <Route path="/user/bookings" element={<ViewBooking />} />
         <Route path="/user/book/event-ticket" element={<BookEventTicket />} />
         <Route path="/user/search" element={<SearchEvents />} />
+         <Route path="/user/profile" element={<UserProfile />} />
       </Route>
 
       {/* Protected Owner Routes */}

@@ -1,135 +1,161 @@
-/* -------- Navbar -------- */
-.nav {
-  position: sticky;
-  top: 0;
-  z-index: 40;
-  background: #ffffff;
-  border-bottom: 1px solid #edf0f3;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 56px;
-  padding: 0 16px;
-}
-
-.logo {
-  font-weight: 700;
-  font-size: 18px;
-}
-
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
+/* ========== Avatar in Navbar ========== */
 .nav-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 999px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
   object-fit: cover;
   cursor: pointer;
-  border: 2px solid #e5e7eb;
-  transition: transform 0.15s ease;
+  border: 2px solid #eee;
+  transition: transform 0.2s ease;
 }
-.nav-avatar:hover { transform: scale(1.03); }
 
-/* -------- Overlay behind panel -------- */
+.nav-avatar:hover {
+  transform: scale(1.05);
+}
+
+/* ========== Fullscreen Overlay ========== */
 .profile-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(17, 24, 39, 0.35); /* semi-dark */
+  background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(2px);
-  z-index: 49;
+  z-index: 1000;
 }
 
-/* -------- Right slide panel -------- */
+/* ========== Side Profile Panel ========== */
 .profile-panel {
   position: fixed;
   top: 0;
-  right: 0;
-  height: 100vh;
+  right: -350px; /* initially hidden */
   width: 320px;
-  max-width: 92vw;
-  background: #ffffff;
-  border-left: 1px solid #eef1f4;
-  box-shadow: -8px 0 24px rgba(0, 0, 0, 0.08);
-  transform: translateX(100%);
-  transition: transform 0.28s ease;
-  z-index: 50;
+  max-width: 90%;
+  height: 100vh;
+  background: #fff;
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  transition: right 0.3s ease-in-out;
+}
+
+.profile-panel.open {
+  right: 0;
+}
+
+/* ========== Header Section ========== */
+.panel-header {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: #fff;
+}
+
+.panel-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 1rem;
+  border: 2px solid #fff;
+}
+
+.panel-user {
   display: flex;
   flex-direction: column;
 }
 
-.profile-panel.open {
-  transform: translateX(0);
+.panel-name {
+  font-weight: 600;
+  font-size: 1.1rem;
 }
 
-/* Header */
-.panel-header {
-  display: flex;
-  gap: 12px;
-  padding: 16px;
-  border-bottom: 1px solid #f0f2f5;
+.panel-email {
+  font-size: 0.85rem;
+  opacity: 0.9;
 }
 
-.panel-avatar {
-  width: 56px;
-  height: 56px;
-  border-radius: 999px;
-  object-fit: cover;
+.panel-role {
+  font-size: 0.8rem;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2px 8px;
+  border-radius: 6px;
+  margin-top: 4px;
+  display: inline-block;
 }
 
-.panel-user { display: flex; flex-direction: column; justify-content: center; }
-.panel-name { font-weight: 600; font-size: 16px; }
-.panel-email { color: #6b7280; font-size: 13px; }
-
-/* Actions */
+/* ========== Actions ========== */
 .panel-actions {
-  padding: 10px;
-  display: grid;
-  gap: 6px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
 }
 
 .panel-btn {
   display: flex;
   align-items: center;
-  gap: 10px;
-  width: 100%;
-  padding: 10px 12px;
-  border: 1px solid transparent;
-  border-radius: 10px;
-  background: #ffffff;
+  gap: 0.6rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.6rem;
+  border: none;
+  border-radius: 8px;
+  background: #f9f9f9;
+  font-size: 0.95rem;
+  font-weight: 500;
   cursor: pointer;
-  font-size: 14px;
-  transition: background 0.15s ease, border-color 0.15s ease;
+  transition: background 0.2s ease, transform 0.1s ease;
 }
-.panel-btn:hover { background: #f7fafc; border-color: #ebeff3; }
 
-.panel-btn .icon { width: 18px; display: inline-flex; justify-content: center; }
+.panel-btn:hover {
+  background: #f1f1f1;
+  transform: translateX(2px);
+}
 
-.panel-btn.danger { color: #e11d48; }
-.panel-btn.danger:hover { background: #fff1f3; border-color: #ffe4e9; }
+.panel-btn .icon {
+  font-size: 1.2rem;
+}
 
-/* Footer */
+.panel-btn.danger {
+  background: #ffecec;
+  color: #d32f2f;
+}
+
+.panel-btn.danger:hover {
+  background: #ffdddd;
+}
+
+/* ========== Footer ========== */
 .panel-footer {
-  margin-top: auto;
-  padding: 12px 16px 16px;
-  border-top: 1px solid #f0f2f5;
+  padding: 1rem;
+  border-top: 1px solid #eee;
 }
+
 .manage-btn {
   width: 100%;
-  padding: 10px 12px;
+  padding: 0.75rem;
+  border: none;
   border-radius: 10px;
-  border: 1px solid #dbe0e6;
-  background: #f9fafb;
-  cursor: pointer;
+  background: #4f46e5;
+  color: #fff;
+  font-size: 0.95rem;
   font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s ease;
 }
-.manage-btn:hover { background: #eef2f7; }
 
-/* Small screens tweaks */
-@media (max-width: 420px) {
-  .panel-avatar { width: 48px; height: 48px; }
-  .profile-panel { width: 300px; }
+.manage-btn:hover {
+  background: #4338ca;
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 480px) {
+  .profile-panel {
+    width: 100%;
+  }
+  .panel-avatar {
+    width: 50px;
+    height: 50px;
+  }
 }

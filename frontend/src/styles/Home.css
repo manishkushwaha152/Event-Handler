@@ -108,30 +108,37 @@
   background: rgba(0, 0, 0, 0.8);
 }
 
-/* ===== CATEGORIES ===== */
-.categories-section {
-  padding: 60px 20px;
-  text-align: center;
+/* ===== FIXED TOP CATEGORIES ===== */
+.categories-fixed {
+  position: sticky;      /* Top par fix */
+  top: 0;
+  z-index: 1000;
+  background: #ffffff;   /* White bg */
+  padding: 10px 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
-.categories-title {
-  font-size: 2rem;
-  margin-bottom: 30px;
+
+.categories-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
 }
-.categories-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 20px;
-}
-.category-card {
-  background: #f3f4f6;
-  padding: 20px;
-  border-radius: 12px;
+
+.category-btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.3s;
+  transition: background 0.3s;
 }
-.category-card:hover {
-  transform: translateY(-5px);
+
+.category-btn:hover {
+  background: #1e40af;
 }
 
 /* ===== SLIDER SECTION ===== */
@@ -220,11 +227,11 @@
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   .arrow {
-    font-size: 1.2rem;       /* arrow chhota ho jaaye */
-    padding: 6px;           /* button compact ho jaaye */
-    top: auto;              /* center se hata do */
-    bottom: 20px;           /* neeche le aao */
-    transform: none;        /* center translate hatado */
+    font-size: 1.2rem;
+    padding: 6px;
+    top: auto;
+    bottom: 20px;
+    transform: none;
   }
 
   .arrow.left {
@@ -233,16 +240,24 @@
   .arrow.right {
     right: 15px;
   }
+
+  .categories-container {
+    gap: 6px;
+  }
+  .category-btn {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+  }
 }
+
 .event-card img {
   width: 100%;
-  height: 180px;       /* fixed height rakhi */
-  object-fit: cover;   /* crop karke same size dikhayega */
+  height: 180px;
+  object-fit: cover;
   border-radius: 8px;
   margin-bottom: 10px;
 }
 
-/* Mobile view ke liye thoda chhoti height */
 @media (max-width: 768px) {
   .event-card img {
     height: 140px;

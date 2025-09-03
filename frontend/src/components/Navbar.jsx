@@ -1,87 +1,109 @@
-import { Link, useNavigate, useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "@/styles/Navbar.css";
 
-export default function Navbar() {
+const Navbar = () => {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [role, setRole] = useState(null);
   const navigate = useNavigate();
-  const location = useLocation();
-  const [role, setRole] = useState(localStorage.getItem("role") || "");
-  const [menuOpen, setMenuOpen] = useState(false);
 
-  // ✅ Update role on route change
   useEffect(() => {
-    const userToken = localStorage.getItem("userToken");
-    const ownerToken = localStorage.getItem("ownerToken");
-    const currentRole = localStorage.getItem("role");
+    // 👇 localStorage se role nikal rahe hain (user ya owner)
+    const storedRole = localStorage.getItem("role"); 
+    setRole(storedRole);
+  }, []);
 
-    if ((userToken || ownerToken) && currentRole) {
-      setRole(currentRole);
-    } else {
-      setRole("");
-    }
-  }, [location]);
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
 
-  // ✅ Logout
   const handleLogout = () => {
-    localStorage.removeItem("userToken");
-    localStorage.removeItem("ownerToken");
+    localStorage.removeItem("token");
     localStorage.removeItem("role");
-    localStorage.removeItem("ownerId");
-    setRole("");
-    navigate("/");
+    navigate("/login");
   };
 
   return (
     <nav className="navbar">
-      <div className="nav-logo" onClick={() => navigate("/")}>
-        🎫 Event Handler
+      <div className="navbar-container">
+        {/* ✅ Logo */}
+        <h1 className="logo" onClick={() => navigate("/")}>
+          EventBooking
+        </h1>
+
+        {/* ✅ Nav Links */}
+        <ul className="nav-links">
+          {role === "user" && (
+            <>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/events">Events</Link>
+              </li>
+              <li>
+                
+                <Link to="/user/search">Search</Link>
+              </li>
+               <li>
+                <Link to="/user/book/event-ticket">Book Ticket</Link>
+              </li>
+               <li>
+                <Link to="/user/booking">Booking </Link>
+              </li>
+            </>
+          )}
+
+          {role === "owner" && (
+            <>
+              <li>
+                <Link to="/manage-events">Manage Events</Link>
+              </li>
+              <li>
+                <Link to="/create-event">Create Event</Link>
+              </li>
+              <li>
+                <Link to="/tickets">Tickets</Link>
+              </li>
+              <li>
+                <Link to="/seats">Seats</Link>
+              </li>
+            </>
+          )}
+
+          {!role && (
+            <>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+              <li>
+                <Link to="/register">Register</Link>
+              </li>
+            </>
+          )}
+        </ul>
+
+        {/* ✅ Profile Menu (Only if logged in) */}
+        {role && (
+          <div className="profile-menu" onClick={toggleDropdown}>
+            <img
+              src="/default-avatar.png"
+              alt="User Avatar"
+              className="profile-avatar"
+            />
+            {dropdownOpen && (
+              <div className="profile-dropdown">
+                <button onClick={() => navigate("/user-profile")}>
+                  UserProfile
+                </button>
+                <button onClick={handleLogout}>Logout</button>
+              </div>
+            )}
+          </div>
+        )}
       </div>
-
-      {/* Hamburger icon for mobile */}
-      <div
-        className={`hamburger ${menuOpen ? "active" : ""}`}
-        onClick={() => setMenuOpen(!menuOpen)}
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-
-      {/* Navbar Links */}
-      <ul className={`nav-links ${menuOpen ? "open" : ""}`}>
-        <li>
-          <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
-        </li>
-
-        {role === "user" && (
-          <>
-            <li><Link to="/events" onClick={() => setMenuOpen(false)}>View Events</Link></li>
-            <li><Link to="/user/book/event-ticket" onClick={() => setMenuOpen(false)}>Book Event</Link></li>
-            <li><Link to="/user/search" onClick={() => setMenuOpen(false)}>Search Event</Link></li>
-            <li><Link to="/user/bookings" onClick={() => setMenuOpen(false)}>My Bookings</Link></li>
-            <li><button className="logout-btn" onClick={handleLogout}>Logout</button></li>
-          </>
-        )}
-
-        {role === "owner" && (
-          <>
-            <li><Link to="/owner/event" onClick={() => setMenuOpen(false)}>My Events</Link></li>
-            <li><Link to="/create-event" onClick={() => setMenuOpen(false)}>Create Event</Link></li>
-            <li><Link to="/owner/create-ticket" onClick={() => setMenuOpen(false)}>Create Ticket</Link></li>
-            <li><Link to="/owner/manage-event" onClick={() => setMenuOpen(false)}>Manage Event</Link></li>
-            <li><Link to="/owner/view-bookings" onClick={() => setMenuOpen(false)}>View Bookings</Link></li>
-            <li><button className="logout-btn" onClick={handleLogout}>Logout</button></li>
-          </>
-        )}
-
-        {!role && (
-          <>
-            <li><Link to="/events" onClick={() => setMenuOpen(false)}>View Events</Link></li>
-            <li><Link to="/login" onClick={() => setMenuOpen(false)}>Login</Link></li>
-            <li><Link to="/register" onClick={() => setMenuOpen(false)}>Register</Link></li>
-          </>
-        )}
-      </ul>
     </nav>
   );
-}
+};
+
+export default Navbar;

@@ -64,6 +64,30 @@ export default function Home() {
 
   return (
     <div>
+      {/* 🎯 Categories - FIXED TOP */}
+      <section className="categories-fixed">
+        <div className="categories-container">
+          {[
+            "Music",
+            "Seminar",
+            "Party",
+            "Theatre",
+            "Gaming",
+            "Business",
+            "Festival",
+            "Exhibition",
+          ].map((cat, idx) => (
+            <button
+              key={idx}
+              className="category-btn"
+              onClick={() => navigate(`/events?category=${cat}`)}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+      </section>
+
       {/* 🌟 Hero Section */}
       {events.length > 0 && (
         <section
@@ -130,27 +154,6 @@ export default function Home() {
           </div>
         </section>
       )}
-
-      {/* 🎯 Categories */}
-      <section className="categories-section">
-        <h2 className="categories-title">🎯 Explore Categories</h2>
-        <div className="categories-grid">
-          {[
-            "Music",
-            "Seminar",
-            "Party",
-            "Theatre",
-            "Gaming",
-            "Business",
-            "Festival",
-            "Exhibition",
-          ].map((cat, idx) => (
-            <div key={idx} className="category-card">
-              {cat}
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* 🌟 Featured Events */}
       <section className="slider-section">

@@ -1,112 +1,125 @@
-/* Navbar main container */
+/* =============================
+   Navbar Styling
+   ============================= */
 .navbar {
-  background-color: #222;
+  background: #1e1e2f;
   color: #fff;
+  padding: 12px 20px;
+  position: sticky; /* 👈 scroll pe top pe fix */
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 24px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  max-width: 1200px;
+  margin: auto;
 }
 
-/* Logo */
-.nav-logo {
-  font-size: 1.5rem;
+/* =============================
+   Logo
+   ============================= */
+.logo {
+  font-size: 1.6rem;
   font-weight: bold;
+  color: #fff;
   cursor: pointer;
-  color: #00e0b7;
+  transition: color 0.3s;
 }
 
-/* Links */
+.logo:hover {
+  color: #ff9800;
+}
+
+/* =============================
+   Nav Links
+   ============================= */
 .nav-links {
   display: flex;
   gap: 18px;
   list-style: none;
-  margin: 0;
-  padding: 0;
 }
 
-.nav-links a,
-.nav-links button {
-  color: white;
+.nav-links li {
+  display: inline-block;
+}
+
+.nav-links a {
   text-decoration: none;
+  color: #fff;
   font-size: 1rem;
-  padding: 6px 10px;
-  border: none;
-  background: none;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #ff9800;
+}
+
+/* =============================
+   Profile Menu
+   ============================= */
+.profile-menu {
+  position: relative;
   cursor: pointer;
-  transition: 0.3s;
 }
 
-.nav-links a:hover,
-.nav-links button:hover {
-  background-color: #333;
-  border-radius: 4px;
+.profile-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 2px solid #ff9800;
+  object-fit: cover;
+  transition: transform 0.2s;
 }
 
-.logout-btn {
-  color: #ff4c4c;
-  font-weight: 500;
+.profile-avatar:hover {
+  transform: scale(1.05);
 }
 
-/* ✅ Hamburger Icon */
-.hamburger {
-  display: none;
+.profile-dropdown {
+  position: absolute;
+  top: 48px;
+  right: 0;
+  background: #2c2c3c;
+  border: 1px solid #444;
+  border-radius: 6px;
+  width: 160px;
+  padding: 8px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  display: flex;
   flex-direction: column;
+  z-index: 2000;
+}
+
+.profile-dropdown button {
+  background: none;
+  border: none;
+  padding: 10px 16px;
+  text-align: left;
+  color: #fff;
+  font-size: 0.95rem;
   cursor: pointer;
-  gap: 4px;
-}
-.hamburger span {
-  width: 25px;
-  height: 3px;
-  background: white;
-  border-radius: 2px;
-  transition: 0.3s;
-}
-.hamburger.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-.hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
+  transition: background 0.3s, color 0.3s;
 }
 
-/* ✅ Responsive */
+.profile-dropdown button:hover {
+  background: #444;
+  color: #ff9800;
+}
+
+/* =============================
+   Responsive
+   ============================= */
 @media (max-width: 768px) {
-  .hamburger {
-    display: flex;
-  }
-
   .nav-links {
-    position: absolute;
-    top: 60px;
-    right: 0;
-    background: #111;
-    flex-direction: column;
-    width: 200px;
-    height: 0;
-    overflow: hidden;
-    transition: height 0.3s ease;
+    display: none; /* Mobile me hide kar do */
   }
 
-  .nav-links.open {
-    height: auto;
-    padding: 10px 0;
-  }
-
-  .nav-links li {
-    width: 100%;
-  }
-
-  .nav-links a,
-  .nav-links button {
-    display: block;
-    width: 100%;
-    text-align: left;
-    padding: 10px 20px;
+  .navbar-container {
+    justify-content: space-between;
   }
 }
