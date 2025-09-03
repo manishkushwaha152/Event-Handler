@@ -12,7 +12,7 @@ export default function UserProfile() {
   useEffect(() => {
     async function fetchUser() {
       try {
-        const { data } = await API.get("/user/profile");
+        const { data } = await api.get("/user/profile");
         setUser(data);
       } catch (err) {
         console.error("User fetch error:", err);
